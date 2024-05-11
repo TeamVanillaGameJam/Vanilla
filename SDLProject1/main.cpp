@@ -4,7 +4,7 @@
 int main(int argc, char* argv[])
 {
 	std::cout << "game init attempt...\n";
-	if (TheGame::Instance()->init("Chapter 1", 0, 40, 1500, 1080, false))
+	if (TheGame::Instance()->init("Chapter 1", 0, 40, 1920, 1080, false))
 	{
 		std::cout << "game init success!\n";
 		while (TheGame::Instance()->running())

@@ -17,7 +17,7 @@ public:
 	virtual bool onEnter();
 	virtual bool onExit();
 	virtual std::string getStateID() const { return s_playID; }
-private:
+protected:
 	static const std::string s_playID;
 	std::vector<GameObject*> m_gameObjects;
 	bool checkCollision(const SDLGameObject* p1, const SDLGameObject* p2) const;
