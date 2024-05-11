@@ -3,6 +3,7 @@
 
 #include "SDLGameObject.h"
 #include "InputHandler.h"
+#include "ClassRoom.h"
 
 class Player : public SDLGameObject
 {

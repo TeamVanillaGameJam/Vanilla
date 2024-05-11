@@ -22,3 +22,40 @@ protected:
 	std::vector<GameObject*> m_gameObjects;
 	bool checkCollision(const SDLGameObject* p1, const SDLGameObject* p2) const;
 };
+
+
+
+class ClassRoom
+	: public PlayState
+{
+public:
+	virtual void update();
+	virtual bool onEnter();
+	//virtual bool onExit();
+
+	virtual bool examFailed();
+
+};
+
+class DS
+	: public ClassRoom
+{
+public:
+	bool onEnter() override;
+};
+
+class DAA
+	: public ClassRoom
+{
+public:
+
+	bool onEnter() override;
+};
+
+class OOP
+	: public ClassRoom
+{
+public:
+	bool onEnter();
+};
+

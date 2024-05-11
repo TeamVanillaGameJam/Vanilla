@@ -80,3 +80,100 @@ bool PlayState::checkCollision(const SDLGameObject* p1, const SDLGameObject* p2)
 	//return true;
 	return false;
 }
+
+
+
+
+bool ClassRoom::onEnter()
+{
+	//teacher png
+	/*if (!TheTextureManager::Instance()->load("Images/mysprite.png", "animate", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}*/
+	//clasroom background
+	if (!TheTextureManager::Instance()->load("Images/classroom.png", "classroom", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	GameObject* background = new Background(new LoaderParams(0, 0, 1000, 800, "classroom"), 0);
+	/*GameObject* player = new Player(new LoaderParams(75, TheGame::Instance()->getGameHeight() - 300, 128, 164, "animate"));*/
+	m_gameObjects.push_back(background);
+	/*m_gameObjects.push_back(player);*/
+
+
+
+	std::cout << "entering Clasroom\n";
+	return true;
+}
+
+
+
+void ClassRoom::update()
+{
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+	{
+		TheGame::Instance()->getStateMachine()->pushState(new PauseState());
+	}
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
+	}
+	//chek
+	if (examFailed())
+	{
+		TheGame::Instance()->getStateMachine()->pushState(new GameOverState());
+	}
+}
+
+bool ClassRoom::examFailed()
+{
+	return false;
+}
+
+
+
+bool DS::onEnter()
+{
+	if (!ClassRoom::onEnter())
+		return false;
+	if (!TheTextureManager::Instance()->load("Images/mysprite.png", "animate", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	//clasroom background
+	/*GameObject* teacher = new Player(new LoaderParams(75, TheGame::Instance()->getGameHeight() - 300, 128, 164, "animate"));
+	m_gameObjects.push_back(teacher);*/
+
+	std::cout << "ds\n";
+	return true;
+}
+
+
+bool DAA::onEnter()
+{
+
+	ClassRoom::onEnter();
+	if (!TheTextureManager::Instance()->load("Images/mysprite.png", "animate", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	/*GameObject* teacher = new Player(new LoaderParams(75, TheGame::Instance()->getGameHeight() - 300, 128, 164, "animate"));
+	m_gameObjects.push_back(teacher);*/
+	std::cout << "stefo\n";
+	return true;
+}
+
+bool OOP::onEnter()
+{
+
+	ClassRoom::onEnter();
+	if (!TheTextureManager::Instance()->load("Images/mysprite.png", "animate", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	/*GameObject* teacher = new Player(new LoaderParams(75, TheGame::Instance()->getGameHeight() - 300, 128, 164, "animate"));
+	m_gameObjects.push_back(teacher);*/
+	std::cout << "stefo\n";
+	return true;
+}
