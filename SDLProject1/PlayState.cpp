@@ -31,7 +31,7 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("Images/hallway.png", "hallway", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->load("Images/hallwaystefo.png", "hallway", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}

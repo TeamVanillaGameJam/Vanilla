@@ -35,21 +35,21 @@ void MenuState::s_exitFromMenu()
 bool MenuState::onEnter()
 {
 
-	if (!TheTextureManager::Instance()->load("Images/Sprite-0001A.png", "playbutton", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->load("Images/PLAY.png", "playbutton", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("Images/Sprite-0001A.png",	"exitbutton", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->load("Images/exit.png",	"exitbutton", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("Images/fmi.png", "background", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->load("Images/fmi.png", "fmibackground", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
-	GameObject* button1 = new MenuButton(new LoaderParams(100, 100, 133, 100, "playbutton"), s_menuToPlay);
-	GameObject* button2 = new MenuButton(new LoaderParams(100, 300, 133, 100, "exitbutton"), s_exitFromMenu);
-	GameObject* background = new Background(new LoaderParams(0, 0, TheGame::Instance()->getGameWidth() * 0.5, TheGame::Instance()->getGameHeight(), "background"), s_menuToPlay);
+	GameObject* button1 = new MenuButton(new LoaderParams(520, 520, 150, 150, "playbutton"), s_menuToPlay);
+	GameObject* button2 = new MenuButton(new LoaderParams(1100, 520, 150, 150, "exitbutton"), s_exitFromMenu);
+	GameObject* background = new Background(new LoaderParams(-40,-80, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight() * 1.7, "fmibackground"), s_menuToPlay);
 	m_gameObjects.push_back(background);
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);

@@ -2,14 +2,14 @@
 #include "SDLGameObject.h"
 #include <iostream>
 
-short const door1x1pos = 100;
-short const door1x2pos = 200;
+short const door1x1pos = 533;
+short const door1x2pos = 786;
 
-short const door2x1pos = 400;
-short const door2x2pos = 500;
+short const door2x1pos = 1107;
+short const door2x2pos = 1259;
 
-short const door3x1pos = 700;
-short const door3x2pos = 800;
+short const door3x1pos = 1606;
+short const door3x2pos = 1762;
 
 Player::Player(const LoaderParams* pParams) :
 	SDLGameObject(pParams)
@@ -67,12 +67,12 @@ void Player::handleInput()
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
-			m_velocity.setX(12);
+			m_velocity.setX(6);
 	
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_A) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 	{
-		    m_velocity.setX(-12);
+		    m_velocity.setX(-6);
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_W) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
 	{
