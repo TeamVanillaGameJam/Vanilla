@@ -4,13 +4,13 @@
 
 
 
-short const door1x1pos = 533;
+short const door1x1pos = 500;
 short const door1x2pos = 786;
 
-short const door2x1pos = 1107;
+short const door2x1pos = 1007;
 short const door2x2pos = 1259;
 
-short const door3x1pos = 1606;
+short const door3x1pos = 1506;
 short const door3x2pos = 1762;
 
 

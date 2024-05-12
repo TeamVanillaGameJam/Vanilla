@@ -130,12 +130,25 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
+		if (!TheTextureManager::Instance()->load("Images/nasa.png", "nasa", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
 	//std::cout << "last x position: " << lastm_positionX << std::endl;
-	
 	GameObject* player = new Player(new LoaderParams(TheGame::Instance()->lastm_positionX, TheGame::Instance()->getGameHeight() - 300, 128, 164, "animate"));
-	GameObject* background = new Background(new LoaderParams(0, 0, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight(), "hallway"), 0);
-	m_gameObjects.push_back(background);
-	m_gameObjects.push_back(player);
+	if (starsCount >= 0)
+	{
+		GameObject* nasa = new Background(new LoaderParams(0, 0, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight(), "hallway"), 0);
+		m_gameObjects.push_back(nasa);
+	}
+	else
+	{
+		
+		GameObject* background = new Background(new LoaderParams(0, 0, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight(), "hallway"), 0);
+		m_gameObjects.push_back(background);
+	}
+		m_gameObjects.push_back(player);
+
 	std::cout << "entering PlayState\n";
 	return true;
 }
@@ -501,8 +514,8 @@ bool DAA::onEnter()
 	answer3 = nullptr;
 	question = new MenuButton(new LoaderParams(800, 180, 200, 100, "daaquestion2"), placeholder);
 	answer1 = new MenuButton(new LoaderParams(800, 280, 200, 100, "daaanswer21"), incorrectAnswer);
-	answer2 = new MenuButton(new LoaderParams(800, 380, 200, 100, "daaanswer22"), correctAnswer);
-	answer3 = new MenuButton(new LoaderParams(800, 480, 200, 100, "daaanswer23"), incorrectAnswer);
+	answer2 = new MenuButton(new LoaderParams(800, 380, 200, 100, "daaanswer22"), incorrectAnswer);
+	answer3 = new MenuButton(new LoaderParams(800, 480, 200, 100, "daaanswer23"), correctAnswer);
 	questions.push_back(question);
 	questions.push_back(answer1);
 	questions.push_back(answer2);
@@ -535,8 +548,8 @@ bool DAA::onEnter()
 	answer2 = nullptr;
 	answer3 = nullptr;
 	question = new MenuButton(new LoaderParams(1000, 180, 200, 100, "daaquestion3"), placeholder);
-	answer1 = new MenuButton(new LoaderParams(1000, 280, 200, 100, "daaanswer31"), correctAnswer);
-	answer2 = new MenuButton(new LoaderParams(1000, 380, 200, 100, "daaanswer32"), incorrectAnswer);
+	answer1 = new MenuButton(new LoaderParams(1000, 280, 200, 100, "daaanswer31"), incorrectAnswer);
+	answer2 = new MenuButton(new LoaderParams(1000, 380, 200, 100, "daaanswer32"), correctAnswer);
 	answer3 = new MenuButton(new LoaderParams(1000, 480, 200, 100, "daaanswer33"), incorrectAnswer);
 	questions.push_back(question);
 	questions.push_back(answer1);
