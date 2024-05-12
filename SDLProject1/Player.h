@@ -5,6 +5,8 @@
 #include "InputHandler.h"
 #include "ClassRoom.h"
 
+
+
 class Player : public SDLGameObject
 {
 public:
@@ -14,7 +16,7 @@ public:
 	virtual void update();
 	virtual void clean();
 	void handleInput();
-	size_t starsCount = 0; // correctly answered count
+	//size_t starsCount = 0; // correctly answered count
 };
 
 

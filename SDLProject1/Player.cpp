@@ -2,6 +2,8 @@
 #include "SDLGameObject.h"
 #include <iostream>
 
+
+
 short const door1x1pos = 533;
 short const door1x2pos = 786;
 
@@ -11,12 +13,14 @@ short const door2x2pos = 1259;
 short const door3x1pos = 1606;
 short const door3x2pos = 1762;
 
+
 Player::Player(const LoaderParams* pParams) :
 	SDLGameObject(pParams)
 {
 }
 void Player::draw()
 {
+	//std::cout << "Printing player\n" << m_position.getX() << "\n";
 	SDLGameObject::draw();
 
 }
@@ -67,7 +71,7 @@ void Player::handleInput()
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
-			m_velocity.setX(6);
+			m_velocity.setX(12);
 	
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_A) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
@@ -80,16 +84,19 @@ void Player::handleInput()
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE) && m_position.getX() >= door1x1pos && m_position.getX() <= door1x2pos)
 	{
+		TheGame::Instance()->lastm_positionX = m_position.getX();
 		std::cout << " firts door detected\n";
 		TheGame::Instance()->getStateMachine()->pushState(new DS());
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE) && m_position.getX() >= door2x1pos && m_position.getX() <= door2x2pos)
 	{
+		TheGame::Instance()->lastm_positionX = m_position.getX();
 		std::cout << " second door detected\n";
 		TheGame::Instance()->getStateMachine()->pushState(new DAA());
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE) && m_position.getX() >= door3x1pos && m_position.getX() <= door3x2pos)
 	{
+		TheGame::Instance()->lastm_positionX = m_position.getX();
 		std::cout << " third door detected\n";
 		TheGame::Instance()->getStateMachine()->pushState(new OOP());
 	}

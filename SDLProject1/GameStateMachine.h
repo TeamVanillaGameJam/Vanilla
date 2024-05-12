@@ -11,6 +11,8 @@ public:
 	void update();
 	void render();
 
+	GameState& getLastState() const;
+
 private:
 	std::vector<GameState*> m_gameStates;
 };

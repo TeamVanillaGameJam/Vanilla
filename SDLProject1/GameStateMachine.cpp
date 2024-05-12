@@ -16,6 +16,15 @@ void GameStateMachine::popState()
 	}
 }
 
+//&&****************************************************
+
+GameState& GameStateMachine::getLastState() const
+{
+	return *m_gameStates[m_gameStates.size() - 1];
+}
+
+
+
 void GameStateMachine::changeState(GameState* pState)
 {
 	if (!m_gameStates.empty())

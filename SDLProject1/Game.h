@@ -47,6 +47,8 @@ public:
 	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
 
+
+	short lastm_positionX = 0;
 	// make the constructor private
 private:
 	//Game() {}; // to define

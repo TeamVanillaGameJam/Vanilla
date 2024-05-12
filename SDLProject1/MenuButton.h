@@ -14,6 +14,7 @@ private:
 
 public:
 	bool m_bReleased; 
+	//bool clicked = false;
 public:
 	MenuButton(const LoaderParams* pParams, void (*callback)());
 	virtual void draw() override;

@@ -16,9 +16,12 @@ public:
 	/*virtual const Vector2D& getPosition() const = 0;
 	virtual int getWidth() const = 0;
 	virtual int getHeight() const = 0;*/
+
+	//this was protected
+	virtual ~GameObject() {}
+
 protected:
 	GameObject(const LoaderParams* pParams) {}
-	virtual ~GameObject() {}
 };
 
 
