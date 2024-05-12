@@ -135,19 +135,22 @@ bool PlayState::onEnter()
 		return false;
 	}
 	//std::cout << "last x position: " << lastm_positionX << std::endl;
+	GameObject* background = nullptr;
 	GameObject* player = new Player(new LoaderParams(TheGame::Instance()->lastm_positionX, TheGame::Instance()->getGameHeight() - 300, 128, 164, "animate"));
-	if (starsCount >= 0)
+	if (starsCount >= 7)
 	{
-		GameObject* nasa = new Background(new LoaderParams(0, 0, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight(), "hallway"), 0);
-		m_gameObjects.push_back(nasa);
+		background = new Background(new LoaderParams(0, 0, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight(), "nasa"), 0);
+		m_gameObjects.push_back(background);
 	}
 	else
 	{
 		
-		GameObject* background = new Background(new LoaderParams(0, 0, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight(), "hallway"), 0);
-		m_gameObjects.push_back(background);
+		background = new Background(new LoaderParams(0, 0, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight(), "hallway"), 0);
+
 	}
+		m_gameObjects.push_back(background);
 		m_gameObjects.push_back(player);
+
 
 	std::cout << "entering PlayState\n";
 	return true;

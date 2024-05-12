@@ -71,7 +71,7 @@ void Player::handleInput()
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
-			m_velocity.setX(12);
+			m_velocity.setX(6);
 	
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_A) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
