@@ -62,14 +62,14 @@ void Player::handleInput()
 
 void Player::handleInput()
 {
-	if (TheInputHandler::Instance()->getMouseButtonState((int)Mouse_buttons::LEFT))
-	{
-		//m_velocity.setX(2);
+	//if (TheInputHandler::Instance()->getMouseButtonState((int)Mouse_buttons::LEFT))
+	//{
+	//	//m_velocity.setX(2);
 
-		Vector2D vec = TheInputHandler::Instance()->getMousePosition();
-		m_velocity = (vec - m_position) / 100;
-	}
-	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
+	//	Vector2D vec = TheInputHandler::Instance()->getMousePosition();
+	//	m_velocity = (vec - m_position) / 100;
+	//}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 	{
 			m_velocity.setX(6);
 	
@@ -78,10 +78,10 @@ void Player::handleInput()
 	{
 		    m_velocity.setX(-6);
 	}
-	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_W) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
-	{
-		m_velocity.setY(-2);
-	}
+	//else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_W) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
+	//{
+	//	m_velocity.setY(-2);
+	//}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE) && m_position.getX() >= door1x1pos && m_position.getX() <= door1x2pos)
 	{
 		TheGame::Instance()->lastm_positionX = m_position.getX();
