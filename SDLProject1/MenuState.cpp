@@ -47,9 +47,9 @@ bool MenuState::onEnter()
 	{
 		return false;
 	}
-	GameObject* button1 = new MenuButton(new LoaderParams(520, 520, 150, 150, "playbutton"), s_menuToPlay);
-	GameObject* button2 = new MenuButton(new LoaderParams(1100, 520, 150, 150, "exitbutton"), s_exitFromMenu);
-	GameObject* background = new Background(new LoaderParams(-40,-80, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight() * 1.7, "fmibackground"), s_menuToPlay);
+	GameObject* button1 = new MenuButton(new LoaderParams(590, 420, 150, 150, "playbutton"), s_menuToPlay);
+	GameObject* button2 = new MenuButton(new LoaderParams(1170, 420, 150, 150, "exitbutton"), s_exitFromMenu);
+	GameObject* background = new Background(new LoaderParams(0,0, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight(), "fmibackground"), s_menuToPlay);
 	m_gameObjects.push_back(background);
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);

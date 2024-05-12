@@ -34,23 +34,28 @@ void setDraw() {
 		drawQuestion[6] = false;
 		drawQuestion[7] = false;
 
-			drawQuestion[8] = true;
-			drawQuestion[9] = true;
-			drawQuestion[10] = true;
-			drawQuestion[11] = true;
+		drawQuestion[8] = true;
+		drawQuestion[9] = true;
+		drawQuestion[10] = true;
+		drawQuestion[11] = true;
 		}
-		if (clickedCount == 3)
-		{
-			drawQuestion[0] = false;
-			drawQuestion[1] = false;
-			drawQuestion[2] = false;
-			drawQuestion[3] = false;
+	if (clickedCount == 3)
+	{
+		drawQuestion[0] = true;
+		drawQuestion[1] = true;
+		drawQuestion[2] = true;
+		drawQuestion[3] = true;
 
-			drawQuestion[4] = false;
-			drawQuestion[5] = false;
-			drawQuestion[6] = false;
-			drawQuestion[7] = false;
-		}
+		drawQuestion[4] = false;
+		drawQuestion[5] = false;
+		drawQuestion[6] = false;
+		drawQuestion[7] = false;
+
+		drawQuestion[8] = false;
+		drawQuestion[9] = false;
+		drawQuestion[10] = false;
+		drawQuestion[11] = false;
+	}
 	
 }
 
@@ -200,7 +205,7 @@ bool ClassRoom::onEnter()
 	{
 		return false;
 	}
-	GameObject* background = new Background(new LoaderParams(0, 0, 1000, 800, "classroom"), 0);
+	GameObject* background = new Background(new LoaderParams(0, 0, TheGame::Instance()->getGameWidth(), TheGame::Instance()->getGameHeight(), "classroom"), 0);
 	m_gameObjects.push_back(background);
 
 	state.push_back(1);
@@ -313,6 +318,14 @@ bool DS::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("Images/prepodavatel 3.png", "bojilov", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+
+	GameObject* background = new MenuButton(new LoaderParams(80, 250, 650, 600, "bojilov"), placeholder);
+	m_gameObjects.push_back(background);
+
 	std::cout << "Clicks count is " << clickedCount << std::endl;
 	std::cout << "Objects count is:" << m_gameObjects.size() << std::endl;
 	SDLGameObject* question = nullptr;
@@ -321,8 +334,8 @@ bool DS::onEnter()
 	SDLGameObject* answer3 = nullptr;
 	question = new MenuButton(new LoaderParams(600, 180, 200, 100, "dsquestion1"), placeholder);
 	answer1 = new MenuButton(new LoaderParams(600, 280, 200, 100, "dsanswer11"), correctAnswer);
-	answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "dsanswer12"), incorrectAnswer);
-	answer3 = new MenuButton(new LoaderParams(600, 480, 200, 100, "dsanswer13"), incorrectAnswer);
+	answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "dsanswer12"), correctAnswer);
+	answer3 = new MenuButton(new LoaderParams(600, 480, 200, 100, "dsanswer13"), correctAnswer);
 	questions.push_back(question);
 	questions.push_back(answer1);
 	questions.push_back(answer2);
@@ -355,9 +368,9 @@ bool DS::onEnter()
 	answer2 = nullptr;
 	answer3 = nullptr;
 	question = new MenuButton(new LoaderParams(800, 180, 200, 100, "dsquestion2"), placeholder);
-	answer1 = new MenuButton(new LoaderParams(800, 280, 200, 100, "dsanswer21"), incorrectAnswer);
+	answer1 = new MenuButton(new LoaderParams(800, 280, 200, 100, "dsanswer21"), correctAnswer);
 	answer2 = new MenuButton(new LoaderParams(800, 380, 200, 100, "dsanswer22"), correctAnswer);
-	answer3 = new MenuButton(new LoaderParams(800, 480, 200, 100, "dsanswer23"), incorrectAnswer);
+	answer3 = new MenuButton(new LoaderParams(800, 480, 200, 100, "dsanswer23"), correctAnswer);
 	questions.push_back(question);
 	questions.push_back(answer1);
 	questions.push_back(answer2);
@@ -390,8 +403,8 @@ bool DS::onEnter()
 	answer2 = nullptr;
 	answer3 = nullptr;
 	question = new MenuButton(new LoaderParams(1000, 180, 200, 100, "dsquestion3"), placeholder);
-	answer1 = new MenuButton(new LoaderParams(1000, 280, 200, 100, "dsanswer31"), correctAnswer);
-	answer2 = new MenuButton(new LoaderParams(1000, 380, 200, 100, "dsanswer32"), incorrectAnswer);
+	answer1 = new MenuButton(new LoaderParams(1000, 280, 200, 100, "dsanswer31"), incorrectAnswer);
+	answer2 = new MenuButton(new LoaderParams(1000, 380, 200, 100, "dsanswer32"), correctAnswer);
 	answer3 = new MenuButton(new LoaderParams(1000, 480, 200, 100, "dsanswer33"), incorrectAnswer);
 	questions.push_back(question);
 	questions.push_back(answer1);
@@ -435,6 +448,16 @@ bool DAA::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("Images/prepodavatel 2.png", "minko", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+
+	GameObject* background = new MenuButton(new LoaderParams(80, 250, 650, 600, "minko"), placeholder);
+	m_gameObjects.push_back(background);
+
+
+
 	std::cout << "Clicks count is " << clickedCount << std::endl;
 	std::cout << "Objects count is:" << m_gameObjects.size() << std::endl;
 	SDLGameObject* question = nullptr;
@@ -596,6 +619,19 @@ bool OOP::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("Images/prepodaratel 1.png", "pesho", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+
+	GameObject* background = new MenuButton(new LoaderParams(80, 250, 650, 600, "pesho"), placeholder);
+	m_gameObjects.push_back(background);
+
+
+
+
+
+
 	std::cout << "Clicks count is " << clickedCount << std::endl;
 	std::cout << "Objects count is:" << m_gameObjects.size() << std::endl;
 	SDLGameObject* question = nullptr;
