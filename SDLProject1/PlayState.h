@@ -41,6 +41,7 @@ class ClassRoom
 public:
 	virtual void update();
 	virtual bool onEnter();
+	virtual void render() override;
 	//virtual bool onExit();
 	bool clicked = false;
 	//short clickedCount = 0;
@@ -50,7 +51,8 @@ public:
 protected:
 
 	//bool clicked = false;
-	std::vector<MenuButton*> questions;
+	std::vector<GameObject*> questions;
+	std::vector<bool> drawQuestion;
 	std::vector<int>state;
 	//virtual void correctAnswer();
 	//virtual void incorrectAnswer();
@@ -81,6 +83,7 @@ class OOP
 	: public ClassRoom
 {
 public:
+	void render() override;
 	bool onEnter() override;
 	void update() override;
 };

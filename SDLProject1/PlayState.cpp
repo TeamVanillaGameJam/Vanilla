@@ -172,7 +172,13 @@ void ClassRoom::update()
 	{
 	     m_gameObjects[i]->update();
 	}
-
+	for (int i = 0; i < questions.size(); i++)
+	{
+		if (drawQuestion[i])
+		{
+			questions[i]->update();
+		}
+	}
 
 	if (clickedCount >= 3)
 	{
@@ -187,6 +193,15 @@ void ClassRoom::update()
 bool ClassRoom::examFailed()
 {
 	return false;
+}
+
+void ClassRoom::render()
+{
+	PlayState::render();
+	//for (size_t i = 0; i < questions.size(); ++i)
+	//{
+	//	questions[i]->draw();
+	//}
 }
 
 
@@ -275,9 +290,24 @@ bool DAA::onEnter()
 void  DAA::update()
 {
 	ClassRoom::update();
+	/*for (size_t i = 0; i < questions.size(); ++i)
+	{
+		questions[i]->update();
+	}*/
 }
 
+void OOP::render()
+{
+	ClassRoom::render();
+	for (size_t i = 0; i < questions.size(); ++i)
+	{
+		if (drawQuestion[i])
+		{
+			questions[i]->draw();
+		}
 
+	}
+}
 
 bool OOP::onEnter()
 {
@@ -304,18 +334,37 @@ bool OOP::onEnter()
 	}
 	std::cout << "Clicks count is " << clickedCount << std::endl;
 	std::cout << "Objects count is:" << m_gameObjects.size() << std::endl;
-	GameObject* question = nullptr;
-	GameObject* answer1 = nullptr;
-	GameObject* answer2 = nullptr;
-	GameObject* answer3 = nullptr;
+	SDLGameObject* question = nullptr;
+	SDLGameObject* answer1 = nullptr;
+	SDLGameObject* answer2 = nullptr;
+	SDLGameObject* answer3 = nullptr;
 	question = new MenuButton(new LoaderParams(600, 180, 200, 100, "oopquestion"), placeholder);
 	answer1 = new MenuButton(new LoaderParams(600, 280, 200, 100, "oopanswer1"), correctAnswer);
 	answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "oopanswer2"), incorrectAnswer);
 	answer3 = new MenuButton(new LoaderParams(800, 180, 200, 100, "oopanswer3"), incorrectAnswer);
-	m_gameObjects.push_back(question);
-	m_gameObjects.push_back(answer1);
-	m_gameObjects.push_back(answer2);
-	m_gameObjects.push_back(answer3);
+	questions.push_back(question);
+	questions.push_back(answer1);
+	questions.push_back(answer2);
+	questions.push_back(answer3);
+	drawQuestion.push_back(true);
+	drawQuestion.push_back(true);
+	drawQuestion.push_back(true);
+	drawQuestion.push_back(true);
+
+
+
+
+
+
+
+
+
+
+
+	//m_gameObjects.push_back(question);
+	//m_gameObjects.push_back(answer1);
+	//m_gameObjects.push_back(answer2);
+	//m_gameObjects.push_back(answer3);
 
 	///*GameObject* teacher = new Player(new LoaderParams(75, TheGame::Instance()->getGameHeight() - 300, 128, 164, "animate"));
 	//m_gameObjects.push_back(teacher);*/
