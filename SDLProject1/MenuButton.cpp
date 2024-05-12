@@ -23,6 +23,7 @@ void MenuButton::update()
 		{
 			//clicked = true;
 			//m_currentFrame = (int)Button_state::CLICKED;
+			std::cout << "PRESSED";
 			m_callback(); // call our callback function
 			m_bReleased = false;
 		}

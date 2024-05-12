@@ -32,16 +32,13 @@ protected:
 	bool checkCollision(const SDLGameObject* p1, const SDLGameObject* p2) const;
 };
 
-void correctAnswer();
-void incorrectAnswer();
-
 class ClassRoom
 	: public PlayState
 {
 public:
 	virtual void update();
 	virtual bool onEnter();
-	virtual void render() override;
+	//virtual void render() override;
 	//virtual bool onExit();
 	bool clicked = false;
 	//short clickedCount = 0;
@@ -52,11 +49,14 @@ protected:
 
 	//bool clicked = false;
 	std::vector<GameObject*> questions;
-	std::vector<bool> drawQuestion;
+	//std::vector<bool> drawQuestion;
 	std::vector<int>state;
-	//virtual void correctAnswer();
-	//virtual void incorrectAnswer();
+	//void correctAnswer();
+	//void incorrectAnswer();
 
+
+	//friend void incorrectAnswer();
+	//friend void correctAnswer();
 
 };
 

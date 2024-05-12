@@ -1,25 +1,89 @@
 #include "PlayState.h"
+static std::vector<bool> drawQuestion;
 
+void setDraw() {
+	if (clickedCount == 0)
+	{
+		drawQuestion[0] = true;
+		drawQuestion[1] = true;
+		drawQuestion[2] = true;
+		drawQuestion[3] = true;
+	}
+	if (clickedCount == 1)
+	{
+		drawQuestion[0] = false;
+		drawQuestion[1] = false;
+		drawQuestion[2] = false;
+		drawQuestion[3] = false;
+
+		drawQuestion[4] = true;
+		drawQuestion[5] = true;
+		drawQuestion[6] = true;
+		drawQuestion[7] = true;
+	}
+
+	if (clickedCount == 2)
+	{
+		drawQuestion[0] = false;
+		drawQuestion[1] = false;
+		drawQuestion[2] = false;
+		drawQuestion[3] = false;
+
+		drawQuestion[4] = false;
+		drawQuestion[5] = false;
+		drawQuestion[6] = false;
+		drawQuestion[7] = false;
+
+			drawQuestion[8] = true;
+			drawQuestion[9] = true;
+			drawQuestion[10] = true;
+			drawQuestion[11] = true;
+		}
+		if (clickedCount == 3)
+		{
+			drawQuestion[0] = false;
+			drawQuestion[1] = false;
+			drawQuestion[2] = false;
+			drawQuestion[3] = false;
+
+			drawQuestion[4] = false;
+			drawQuestion[5] = false;
+			drawQuestion[6] = false;
+			drawQuestion[7] = false;
+		}
+	
+}
 
 
 void placeholder()
 {
 	return;
 }
+
 void correctAnswer()
 {
 	std::cout << starsCount << "\n";
-	starsCount++;
-	std::cout << starsCount << "\n";
+	std::cout << clickedCount << "\n";
+
 	clickedCount++;
+	setDraw();
+
+
+	starsCount++;
 }
+
 void incorrectAnswer()
 {
-	clickedCount++;
+	clickedCount++;	
+	setDraw();
+
+
 	std::cout << "losho\n";
 	return;//kolega sepemvri
 
 }
+
+
 const std::string PlayState::s_playID = "PLAY";
 void PlayState::update()
 {
@@ -141,6 +205,12 @@ bool ClassRoom::onEnter()
 
 	state.push_back(1);
 
+
+	//for (size_t i = 0; i < 12; ++i)
+	//{
+	//	drawQuestion.push_back(false);
+	//}
+
 	std::cout << "entering Clasroom\n";
 	return true;
 }
@@ -172,6 +242,27 @@ void ClassRoom::update()
 	{
 	     m_gameObjects[i]->update();
 	}
+	//if (clickedCount == 0)
+	//{
+	//	questions[0]->update();
+	//	questions[1]->update();
+	//	questions[2]->update();
+	//	questions[3]->update();
+	//}
+	//else if (clickedCount == 1)
+	//{
+	//	questions[4]->update();
+	//	questions[5]->update();
+	//	questions[6]->update();
+	//	questions[7]->update();
+	//}
+	//else if (clickedCount == 2)
+	//{
+	//	questions[8]->update();
+	//	questions[9]->update();
+	//	questions[10]->update();
+	//	questions[11]->update();
+	//}
 	for (int i = 0; i < questions.size(); i++)
 	{
 		if (drawQuestion[i])
@@ -180,8 +271,11 @@ void ClassRoom::update()
 		}
 	}
 
+
+	size_t debug = drawQuestion.size();
 	if (clickedCount >= 3)
 	{
+		size_t debug = drawQuestion.size();
 		std::cout << "clickled 5 times\n";
 		clickedCount = 0;
 		TheGame::Instance()->getStateMachine()->popState();
@@ -195,14 +289,14 @@ bool ClassRoom::examFailed()
 	return false;
 }
 
-void ClassRoom::render()
-{
-	PlayState::render();
-	//for (size_t i = 0; i < questions.size(); ++i)
-	//{
-	//	questions[i]->draw();
-	//}
-}
+//void ClassRoom::render()
+//{
+//	PlayState::render();
+//	//for (size_t i = 0; i < questions.size(); ++i)
+//	//{
+//	//	questions[i]->draw();
+// //   }
+//}
 
 
 
@@ -298,14 +392,13 @@ void  DAA::update()
 
 void OOP::render()
 {
-	ClassRoom::render();
+	PlayState::render();
 	for (size_t i = 0; i < questions.size(); ++i)
 	{
 		if (drawQuestion[i])
 		{
 			questions[i]->draw();
 		}
-
 	}
 }
 
@@ -316,19 +409,19 @@ bool OOP::onEnter()
 	if (!ClassRoom::onEnter())
 		return false;
 
-	if (!TheTextureManager::Instance()->load("Images/OOPQuestion.png", "oopquestion", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->load("Images/OOPQuestion1.png", "oopquestion1", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("Images/OOPAnswer1.png", "oopanswer1", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->load("Images/OOPAnswer11.png", "oopanswer11", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("Images/OOPAnswer2.png", "oopanswer2", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->load("Images/OOPAnswer12.png", "oopanswer12", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("Images/OOPAnswer3.png", "oopanswer3", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->load("Images/OOPAnswer13.png", "oopanswer13", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
@@ -338,10 +431,10 @@ bool OOP::onEnter()
 	SDLGameObject* answer1 = nullptr;
 	SDLGameObject* answer2 = nullptr;
 	SDLGameObject* answer3 = nullptr;
-	question = new MenuButton(new LoaderParams(600, 180, 200, 100, "oopquestion"), placeholder);
-	answer1 = new MenuButton(new LoaderParams(600, 280, 200, 100, "oopanswer1"), correctAnswer);
-	answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "oopanswer2"), incorrectAnswer);
-	answer3 = new MenuButton(new LoaderParams(800, 180, 200, 100, "oopanswer3"), incorrectAnswer);
+	question = new MenuButton(new LoaderParams(600, 180, 200, 100, "oopquestion1"), placeholder);
+	answer1 = new MenuButton(new LoaderParams(600, 280, 200, 100, "oopanswer11"), correctAnswer);
+	answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "oopanswer12"), incorrectAnswer);
+	answer3 = new MenuButton(new LoaderParams(600, 480, 200, 100, "oopanswer13"), incorrectAnswer);
 	questions.push_back(question);
 	questions.push_back(answer1);
 	questions.push_back(answer2);
@@ -353,41 +446,73 @@ bool OOP::onEnter()
 
 
 
+	if (!TheTextureManager::Instance()->load("Images/OOPQuestion2.png", "oopquestion2", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/OOPAnswer21.png", "oopanswer21", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/OOPAnswer22.png", "oopanswer22", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/OOPAnswer23.png", "oopanswer23", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	question = nullptr;
+	answer1 = nullptr;
+	answer2 = nullptr;
+	answer3 = nullptr;
+	question = new MenuButton(new LoaderParams(800, 180, 200, 100, "oopquestion2"), placeholder);
+	answer1 = new MenuButton(new LoaderParams(800, 280, 200, 100, "oopanswer21"), correctAnswer);
+	answer2 = new MenuButton(new LoaderParams(800, 380, 200, 100, "oopanswer22"), incorrectAnswer);
+	answer3 = new MenuButton(new LoaderParams(800, 480, 200, 100, "oopanswer23"), incorrectAnswer);
+	questions.push_back(question);
+	questions.push_back(answer1);
+	questions.push_back(answer2);
+	questions.push_back(answer3);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
 
 
 
-
-
-
-
-
-	//m_gameObjects.push_back(question);
-	//m_gameObjects.push_back(answer1);
-	//m_gameObjects.push_back(answer2);
-	//m_gameObjects.push_back(answer3);
-
-	///*GameObject* teacher = new Player(new LoaderParams(75, TheGame::Instance()->getGameHeight() - 300, 128, 164, "animate"));
-	//m_gameObjects.push_back(teacher);*/
-
-	//GameObject* question = nullptr;
-	//GameObject* answer1 =  nullptr;
-	//GameObject* answer2 =  nullptr;
-	//GameObject* answer3 =  nullptr;
-
-	//question = new MenuButton(new LoaderParams(600, 180, 200, 100, "oopquestion"), placeholder);
-	//answer1 = new MenuButton(new LoaderParams(600, 280, 200, 100, "oopanswer1"), correctAnswer);
-	//answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "oopanswer2"), incorrectAnswer);
-	//answer3 = new MenuButton(new LoaderParams(800, 180, 200, 100, "oopanswer3"), incorrectAnswer);
-
-	//m_gameObjects.push_back(question);
-	//indexes[0] = m_gameObjects.size();
-	//m_gameObjects.push_back(answer1);
-	//indexes[1] = m_gameObjects.size();
-	//m_gameObjects.push_back(answer2);
-	//indexes[2] = m_gameObjects.size();
-	//m_gameObjects.push_back(answer3);
-	//indexes[3] = m_gameObjects.size();
-
+	if (!TheTextureManager::Instance()->load("Images/OOPQuestion3.png", "oopquestion3", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/OOPAnswer31.png", "oopanswer31", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/OOPAnswer32.png", "oopanswer32", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/OOPAnswer33.png", "oopanswer33", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	question = nullptr;
+	answer1 = nullptr;
+	answer2 = nullptr;
+	answer3 = nullptr;
+	question = new MenuButton(new LoaderParams(1000, 180, 200, 100, "oopquestion3"), placeholder);
+	answer1 = new MenuButton(new LoaderParams(1000, 280, 200, 100, "oopanswer31"), correctAnswer);
+	answer2 = new MenuButton(new LoaderParams(1000, 380, 200, 100, "oopanswer32"), incorrectAnswer);
+	answer3 = new MenuButton(new LoaderParams(1000, 480, 200, 100, "oopanswer33"), incorrectAnswer);
+	questions.push_back(question);
+	questions.push_back(answer1);
+	questions.push_back(answer2);
+	questions.push_back(answer3);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
 
 	std::cout << "stefo\n";
 	return true;
