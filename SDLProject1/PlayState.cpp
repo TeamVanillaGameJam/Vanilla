@@ -121,7 +121,7 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("Images/hallwaystefo.png", "hallway", TheGame::Instance()->getRenderer()))
+	if (!TheTextureManager::Instance()->load("Images/hallwayFINAL.png", "hallway", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
@@ -289,49 +289,120 @@ bool ClassRoom::examFailed()
 	return false;
 }
 
-//void ClassRoom::render()
-//{
-//	PlayState::render();
-//	//for (size_t i = 0; i < questions.size(); ++i)
-//	//{
-//	//	questions[i]->draw();
-// //   }
-//}
-
 
 
 bool DS::onEnter()
-{	
-	//if (!TheTextureManager::Instance()->load("Images/DSquestion.png", "dsquestion", TheGame::Instance()->getRenderer()))
-	//{
-	//	return false;
-	//}
-	//if (!TheTextureManager::Instance()->load("Images/DSAnswer1.png", "dsanswer1", TheGame::Instance()->getRenderer()))
-	//{
-	//	return false;
-	//}
-	//if (!TheTextureManager::Instance()->load("Images/DSAnswer2.png", "dsanswer2", TheGame::Instance()->getRenderer()))
-	//{
-	//	return false;
-	//}
-	//if (!TheTextureManager::Instance()->load("Images/DSAnswer3.png", "dsanswer3", TheGame::Instance()->getRenderer()))
-	//{
-	//	return false;
-	//}
+{
 
 	if (!ClassRoom::onEnter())
 		return false;
 
-	//GameObject* question = new MenuButton(new LoaderParams(0, 0, 1000, 800, "dsquestion"), nullptr);
-	//GameObject* answer1 = new MenuButton(new LoaderParams(0, 0, 1000, 800, "dsanswer1"), 0);
-	//GameObject* answer2 = new MenuButton(new LoaderParams(0, 0, 1000, 800, "dsanswer2"), 0);
-	//GameObject* answer3 = new MenuButton(new LoaderParams(0, 0, 1000, 800, "dsanswer3"), 0);
-	//m_gameObjects.push_back(question);
-	//m_gameObjects.push_back(answer1);
-	//m_gameObjects.push_back(answer2);
-	//m_gameObjects.push_back(answer3);
+	if (!TheTextureManager::Instance()->load("Images/DSQuesiton1.png", "dsquestion1", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DSAnswer11.png", "dsanswer11", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DSAnswer12.png", "dsanswer12", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DSAnswer13.png", "dsanswer13", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	std::cout << "Clicks count is " << clickedCount << std::endl;
+	std::cout << "Objects count is:" << m_gameObjects.size() << std::endl;
+	SDLGameObject* question = nullptr;
+	SDLGameObject* answer1 = nullptr;
+	SDLGameObject* answer2 = nullptr;
+	SDLGameObject* answer3 = nullptr;
+	question = new MenuButton(new LoaderParams(600, 180, 200, 100, "dsquestion1"), placeholder);
+	answer1 = new MenuButton(new LoaderParams(600, 280, 200, 100, "dsanswer11"), correctAnswer);
+	answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "dsanswer12"), incorrectAnswer);
+	answer3 = new MenuButton(new LoaderParams(600, 480, 200, 100, "dsanswer13"), incorrectAnswer);
+	questions.push_back(question);
+	questions.push_back(answer1);
+	questions.push_back(answer2);
+	questions.push_back(answer3);
+	drawQuestion.push_back(true);
+	drawQuestion.push_back(true);
+	drawQuestion.push_back(true);
+	drawQuestion.push_back(true);
 
-	std::cout << "ds\n";
+
+
+	if (!TheTextureManager::Instance()->load("Images/DSQuestion2.png", "dsquestion2", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DSAnswer21.png", "dsanswer21", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DSAnswer22.png", "dsanswer22", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DSAnswer23.png", "dsanswer23", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	question = nullptr;
+	answer1 = nullptr;
+	answer2 = nullptr;
+	answer3 = nullptr;
+	question = new MenuButton(new LoaderParams(800, 180, 200, 100, "dsquestion2"), placeholder);
+	answer1 = new MenuButton(new LoaderParams(800, 280, 200, 100, "dsanswer21"), incorrectAnswer);
+	answer2 = new MenuButton(new LoaderParams(800, 380, 200, 100, "dsanswer22"), correctAnswer);
+	answer3 = new MenuButton(new LoaderParams(800, 480, 200, 100, "dsanswer23"), incorrectAnswer);
+	questions.push_back(question);
+	questions.push_back(answer1);
+	questions.push_back(answer2);
+	questions.push_back(answer3);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+
+
+
+	if (!TheTextureManager::Instance()->load("Images/DSQuestion3.png", "dsquestion3", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DSAnswer31.png", "dsanswer31", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DSAnswer32.png", "dsanswer32", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DSAnswer33.png", "dsanswer33", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	question = nullptr;
+	answer1 = nullptr;
+	answer2 = nullptr;
+	answer3 = nullptr;
+	question = new MenuButton(new LoaderParams(1000, 180, 200, 100, "dsquestion3"), placeholder);
+	answer1 = new MenuButton(new LoaderParams(1000, 280, 200, 100, "dsanswer31"), correctAnswer);
+	answer2 = new MenuButton(new LoaderParams(1000, 380, 200, 100, "dsanswer32"), incorrectAnswer);
+	answer3 = new MenuButton(new LoaderParams(1000, 480, 200, 100, "dsanswer33"), incorrectAnswer);
+	questions.push_back(question);
+	questions.push_back(answer1);
+	questions.push_back(answer2);
+	questions.push_back(answer3);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+
+	std::cout << "stefo\n";
 	return true;
 }
 void DS::update()
@@ -344,42 +415,118 @@ void DS::update()
 
 bool DAA::onEnter()
 {
-	/*if (!TheTextureManager::Instance()->load("Images/DAAquestion.png", "daaquestion", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}*/
-	//if (!TheTextureManager::Instance()->load("Images/DAAAnswer1.png", "daaanswer1", TheGame::Instance()->getRenderer()))
-	//{
-	//	return false;
-	//}
-	//if (!TheTextureManager::Instance()->load("Images/DAAAnswer2.png", "daaanswer2", TheGame::Instance()->getRenderer()))
-	//{
-	//	return false;
-	//}
-	//if (!TheTextureManager::Instance()->load("Images/DAAAnswer3.png", "daaanswer3", TheGame::Instance()->getRenderer()))
-	//{
-	//	return false;
-	//}
-
 
 	if (!ClassRoom::onEnter())
 		return false;
-	/*GameObject* teacher = new Player(new LoaderParams(75, TheGame::Instance()->getGameHeight() - 300, 128, 164, "animate"));
-	m_gameObjects.push_back(teacher);*/
 
-	//GameObject* question = new MenuButton(new LoaderParams(0, 0, 1000, 800, "daaquestion"), nullptr);
-	//GameObject* answer1 = new MenuButton(new LoaderParams(0, 0, 1000, 800, "daaanswer1"), 0);
-	//GameObject* answer2 = new MenuButton(new LoaderParams(0, 0, 1000, 800, "daaanswer2"), 0);
-	//GameObject* answer3 = new MenuButton(new LoaderParams(0, 0, 1000, 800, "daaanswer3"), 0);
-	//m_gameObjects.push_back(question);
-	//m_gameObjects.push_back(answer1);
-	//m_gameObjects.push_back(answer2);
-	//m_gameObjects.push_back(answer3);
+	if (!TheTextureManager::Instance()->load("Images/DAAQuestion1.png", "daaquestion1", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DAAAnswer11.png", "daaanswer11", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DAAAnswer12.png", "daaanswer12", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DAAAnswer13.png", "daaanswer13", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	std::cout << "Clicks count is " << clickedCount << std::endl;
+	std::cout << "Objects count is:" << m_gameObjects.size() << std::endl;
+	SDLGameObject* question = nullptr;
+	SDLGameObject* answer1 = nullptr;
+	SDLGameObject* answer2 = nullptr;
+	SDLGameObject* answer3 = nullptr;
+	question = new MenuButton(new LoaderParams(600, 180, 200, 100, "daaquestion1"), placeholder);
+	answer1 = new MenuButton(new LoaderParams(600, 280, 200, 100, "daaanswer11"), correctAnswer);
+	answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "daaanswer12"), incorrectAnswer);
+	answer3 = new MenuButton(new LoaderParams(600, 480, 200, 100, "daaanswer13"), incorrectAnswer);
+	questions.push_back(question);
+	questions.push_back(answer1);
+	questions.push_back(answer2);
+	questions.push_back(answer3);
+	drawQuestion.push_back(true);
+	drawQuestion.push_back(true);
+	drawQuestion.push_back(true);
+	drawQuestion.push_back(true);
+
+
+
+	if (!TheTextureManager::Instance()->load("Images/DAAQuestion2.png", "daaquestion2", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DAAAnswer21.png", "daaanswer21", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DAAAnswer22.png", "daaanswer22", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DAAAnswer23.png", "daaanswer23", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	question = nullptr;
+	answer1 = nullptr;
+	answer2 = nullptr;
+	answer3 = nullptr;
+	question = new MenuButton(new LoaderParams(800, 180, 200, 100, "daaquestion2"), placeholder);
+	answer1 = new MenuButton(new LoaderParams(800, 280, 200, 100, "daaanswer21"), incorrectAnswer);
+	answer2 = new MenuButton(new LoaderParams(800, 380, 200, 100, "daaanswer22"), correctAnswer);
+	answer3 = new MenuButton(new LoaderParams(800, 480, 200, 100, "daaanswer23"), incorrectAnswer);
+	questions.push_back(question);
+	questions.push_back(answer1);
+	questions.push_back(answer2);
+	questions.push_back(answer3);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+
+
+
+	if (!TheTextureManager::Instance()->load("Images/DAAQuestion3.png", "daaquestion3", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DAAAnswer31.png", "daaanswer31", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DAAAnswer32.png", "daaanswer32", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("Images/DAAAnswer33.png", "daaanswer33", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	question = nullptr;
+	answer1 = nullptr;
+	answer2 = nullptr;
+	answer3 = nullptr;
+	question = new MenuButton(new LoaderParams(1000, 180, 200, 100, "daaquestion3"), placeholder);
+	answer1 = new MenuButton(new LoaderParams(1000, 280, 200, 100, "daaanswer31"), correctAnswer);
+	answer2 = new MenuButton(new LoaderParams(1000, 380, 200, 100, "daaanswer32"), incorrectAnswer);
+	answer3 = new MenuButton(new LoaderParams(1000, 480, 200, 100, "daaanswer33"), incorrectAnswer);
+	questions.push_back(question);
+	questions.push_back(answer1);
+	questions.push_back(answer2);
+	questions.push_back(answer3);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
+	drawQuestion.push_back(false);
 
 	std::cout << "stefo\n";
 	return true;
 }
-
 
 void  DAA::update()
 {
@@ -389,6 +536,30 @@ void  DAA::update()
 		questions[i]->update();
 	}*/
 }
+void DAA::render()
+{
+	PlayState::render();
+	for (size_t i = 0; i < questions.size(); ++i)
+	{
+		if (drawQuestion[i])
+		{
+			questions[i]->draw();
+		}
+	}
+}
+
+void DS::render()
+{
+	PlayState::render();
+	for (size_t i = 0; i < questions.size(); ++i)
+	{
+		if (drawQuestion[i])
+		{
+			questions[i]->draw();
+		}
+	}
+}
+
 
 void OOP::render()
 {
@@ -467,8 +638,8 @@ bool OOP::onEnter()
 	answer2 = nullptr;
 	answer3 = nullptr;
 	question = new MenuButton(new LoaderParams(800, 180, 200, 100, "oopquestion2"), placeholder);
-	answer1 = new MenuButton(new LoaderParams(800, 280, 200, 100, "oopanswer21"), correctAnswer);
-	answer2 = new MenuButton(new LoaderParams(800, 380, 200, 100, "oopanswer22"), incorrectAnswer);
+	answer1 = new MenuButton(new LoaderParams(800, 280, 200, 100, "oopanswer21"), incorrectAnswer);
+	answer2 = new MenuButton(new LoaderParams(800, 380, 200, 100, "oopanswer22"), correctAnswer);
 	answer3 = new MenuButton(new LoaderParams(800, 480, 200, 100, "oopanswer23"), incorrectAnswer);
 	questions.push_back(question);
 	questions.push_back(answer1);
@@ -523,120 +694,6 @@ void  OOP::update()
 {
 	//size_t localClikedCount = clickedCount;
 	  ClassRoom::update();
-	  //if (clickedForClassroom)
-	  //{
-		 // std::cout << "clickled 5 times\n";
-		 // clickedCount = 0;
-		 // TheGame::Instance()->getStateMachine()->popState();
-		 // TheGame::Instance()->getStateMachine()->pushState(new OOP());
-	  //}
-	//if (clickedCount != localClikedCount)
-	 //  clicked = true;
-	/*if (clickedCount > 0 && m_gameObjects.size() > 4)
-	{
-		std::cout << "Clicks count is " << clickedCount << std::endl;
-		std::cout << "Objects count is:" << m_gameObjects.size() << std::endl;
-		GameObject* question = nullptr;
-		GameObject* answer1 = nullptr;
-		GameObject* answer2 = nullptr;
-		GameObject* answer3 = nullptr;*/
 
-
-		/*m_gameObjects.pop_back();
-		std::cout << "Objects NEW count is:" << m_gameObjects.size() << std::endl;
-
-		m_gameObjects.pop_back();
-		std::cout << "Objects NEW count is:" << m_gameObjects.size() << std::endl;
-
-		m_gameObjects.pop_back();
-		std::cout << "Objects NEW count is:" << m_gameObjects.size() << std::endl;
-
-		m_gameObjects.pop_back();
-		std::cout << "Objects NEW count is:" << m_gameObjects.size() << std::endl;*/
-		/*if (clickedCount % 3 == 0)
-		{
-			if (!TheTextureManager::Instance()->load("Images/OOPAnswer1.png", "oopanswer3", TheGame::Instance()->getRenderer()))
-			{
-				return;
-			}
-			if (!TheTextureManager::Instance()->load("Images/OOPQuestion.png", "oopquestion", TheGame::Instance()->getRenderer()))
-			{
-
-				return;
-			}
-			if (!TheTextureManager::Instance()->load("Images/OOPAnswer3.png", "oopanswer1", TheGame::Instance()->getRenderer()))
-			{
-				return;
-			}
-			if (!TheTextureManager::Instance()->load("Images/OOPAnswer2.png", "oopanswer2", TheGame::Instance()->getRenderer()))
-			{
-				return;
-			}
-
-			question = new MenuButton(new LoaderParams(600, 180, 200, 100, "oopquestion"), placeholder);
-			answer1 = new MenuButton(new LoaderParams(600, 280, 200, 100, "oopanswer1"), correctAnswer);
-			answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "oopanswer2"), incorrectAnswer);
-			answer3 = new MenuButton(new LoaderParams(800, 180, 200, 100, "oopanswer3"), incorrectAnswer);
-
-		}
-		else if (clickedCount % 3 == 1)
-		{
-			if (!TheTextureManager::Instance()->load("Images/newgame.png", "oopanswer3", TheGame::Instance()->getRenderer()))
-			{
-				std::cout << "Changed image1\n";
-				return;
-
-			}
-			if (!TheTextureManager::Instance()->load("Images/OOPQuestion.png", "oopquestion", TheGame::Instance()->getRenderer()))
-			{
-
-				return;
-			}
-			if (!TheTextureManager::Instance()->load("Images/OOPAnswer2.png", "oopanswer1", TheGame::Instance()->getRenderer()))
-			{
-				return;
-			}
-			if (!TheTextureManager::Instance()->load("Images/OOPAnswer3.png", "oopanswer2", TheGame::Instance()->getRenderer()))
-			{
-				return;
-			}
-
-			question = new MenuButton(new LoaderParams(600, 180, 200, 100, "oopquestion"), placeholder);
-			answer1 = new MenuButton(new LoaderParams(600, 280, 200, 100, "oopanswer1"), correctAnswer);
-			answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "oopanswer2"), incorrectAnswer);
-			answer3 = new MenuButton(new LoaderParams(800, 180, 200, 100, "oopanswer3"), incorrectAnswer);
-
-		}
-		else if (clickedCount % 3 == 2)
-		{
-			if (!TheTextureManager::Instance()->load("Images/OOPAnswer1.png", "oopanswer3", TheGame::Instance()->getRenderer()))
-			{
-				return;
-			}
-			if (!TheTextureManager::Instance()->load("Images/exit.png", "oopquestion", TheGame::Instance()->getRenderer()))
-			{
-				std::cout << "Changed image2\n";
-				return;
-			}
-			if (!TheTextureManager::Instance()->load("Images/OOPAnswer3.png", "oopanswer1", TheGame::Instance()->getRenderer()))
-			{
-				return;
-			}
-			if (!TheTextureManager::Instance()->load("Images/OOPAnswer2.png", "oopanswer2", TheGame::Instance()->getRenderer()))
-			{
-				return;
-			}
-
-			question = new MenuButton(new LoaderParams(600, 180, 200, 100, "oopquestion"), placeholder);
-			answer1 = new MenuButton(new LoaderParams(600, 280, 200, 100, "oopanswer1"), correctAnswer);
-			answer2 = new MenuButton(new LoaderParams(600, 380, 200, 100, "oopanswer2"), incorrectAnswer);
-			answer3 = new MenuButton(new LoaderParams(800, 180, 200, 100, "oopanswer3"), incorrectAnswer);
-
-		}
-		m_gameObjects.push_back(question);
-		m_gameObjects.push_back(answer1);
-		m_gameObjects.push_back(answer2);
-		m_gameObjects.push_back(answer3);*/
-		//clicked = false;
-	}
+}
 

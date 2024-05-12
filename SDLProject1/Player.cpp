@@ -85,8 +85,9 @@ void Player::handleInput()
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE) && m_position.getX() >= door1x1pos && m_position.getX() <= door1x2pos)
 	{
 		TheGame::Instance()->lastm_positionX = m_position.getX();
-		std::cout << " firts door detected\n";
-		TheGame::Instance()->getStateMachine()->pushState(new DS());
+		std::cout << " third door detected\n";
+		TheGame::Instance()->getStateMachine()->pushState(new OOP());
+
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE) && m_position.getX() >= door2x1pos && m_position.getX() <= door2x2pos)
 	{
@@ -97,8 +98,8 @@ void Player::handleInput()
 	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE) && m_position.getX() >= door3x1pos && m_position.getX() <= door3x2pos)
 	{
 		TheGame::Instance()->lastm_positionX = m_position.getX();
-		std::cout << " third door detected\n";
-		TheGame::Instance()->getStateMachine()->pushState(new OOP());
+		std::cout << " firts door detected\n";
+		TheGame::Instance()->getStateMachine()->pushState(new DS());
 	}
 	//else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_S) || TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
 	//{

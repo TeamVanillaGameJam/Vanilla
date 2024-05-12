@@ -67,6 +67,7 @@ class DS
 	: public ClassRoom
 {
 public:
+	void render() override;
 	bool onEnter() override;
 	void update() override;
 };
@@ -75,6 +76,7 @@ class DAA
 	: public ClassRoom
 {
 public:
+	void render() override;
 	bool onEnter() override;
 	void update() override;
 };
